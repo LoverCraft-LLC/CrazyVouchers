@@ -3,7 +3,7 @@ main: '${group}.${name}'
 
 authors: ${authors}
 
-version: '${version}'
+version: '3.4'
 api-version: '${apiVersion}'
 description: '${description}'
 

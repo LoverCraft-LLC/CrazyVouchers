@@ -6,10 +6,6 @@ plugins {
     `paper-plugin`
 }
 
-feather {
-    repository("https://repo.oraxen.com/releases")
-}
-
 base {
     archivesName.set(rootProject.name)
 }
@@ -17,7 +13,7 @@ base {
 dependencies {
     paperweight.paperDevBundle(libs.versions.paper)
 
-    api(projects.crazyvouchersCore)
+    api(project(":core"))
 
     // org.yaml is already bundled with Paper
     implementation(libs.vital.paper) {
@@ -48,29 +44,6 @@ tasks {
         minecraftVersion(libs.versions.minecraft.get())
     }
 
-    publishing {
-        repositories {
-            maven {
-                url = uri("https://repo.crazycrew.us/releases")
-
-                credentials {
-                    this.username = System.getenv("gradle_username")
-                    this.password = System.getenv("gradle_password")
-                }
-            }
-        }
-
-        publications {
-            create<MavenPublication>("maven") {
-                groupId = rootProject.group.toString()
-                artifactId = "${rootProject.name.lowercase()}-paper-api"
-                version = rootProject.version.toString()
-
-                from(component)
-            }
-        }
-    }
-
     assemble {
         dependsOn(reobfJar)
 
@@ -97,10 +70,9 @@ tasks {
 
     processResources {
         inputs.properties("name" to rootProject.name)
-        inputs.properties("version" to project.version)
         inputs.properties("group" to project.group)
         inputs.properties("description" to project.properties["description"])
-        inputs.properties("apiVersion" to libs.versions.minecraft.get())
+        inputs.properties("apiVersion" to "1.20")
         inputs.properties("authors" to project.properties["authors"])
         inputs.properties("website" to project.properties["website"])
 

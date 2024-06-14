@@ -1,7 +1,7 @@
 [versions]
 # Minecraft
-paper = "1.20.6-R0.1-SNAPSHOT"
-minecraft = "1.20.6"
+paper = "1.20.4-R0.1-SNAPSHOT"
+minecraft = "1.20.4"
 
 # Plugins
 itemsadder = "3.6.3-beta-14"
@@ -13,7 +13,7 @@ oraxen = "1.171.0"
 annotations = "24.1.0"
 crazycrates = "0.6"
 gson = "2.10.1"
-vital = "1.4"
+vital = "1.0.2"
 
 decentholograms = "2.8.8"
 fancyholograms = "2.0.6"
