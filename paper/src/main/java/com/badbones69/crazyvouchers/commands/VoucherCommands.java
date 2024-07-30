@@ -1,16 +1,16 @@
 package com.badbones69.crazyvouchers.commands;
 
-import com.badbones69.crazyvouchers.Methods;
 import com.badbones69.crazyvouchers.CrazyVouchers;
-import com.badbones69.crazyvouchers.api.InventoryManager;
-import com.badbones69.crazyvouchers.api.enums.Messages;
-import com.badbones69.crazyvouchers.api.objects.other.ItemBuilder;
-import com.badbones69.crazyvouchers.api.objects.Voucher;
+import com.badbones69.crazyvouchers.Methods;
+import com.badbones69.crazyvouchers.api.CrazyManager;
 import com.badbones69.crazyvouchers.api.FileManager;
 import com.badbones69.crazyvouchers.api.FileManager.Files;
-import com.badbones69.crazyvouchers.api.CrazyManager;
+import com.badbones69.crazyvouchers.api.InventoryManager;
+import com.badbones69.crazyvouchers.api.enums.Messages;
 import com.badbones69.crazyvouchers.api.events.VoucherRedeemCodeEvent;
+import com.badbones69.crazyvouchers.api.objects.Voucher;
 import com.badbones69.crazyvouchers.api.objects.VoucherCode;
+import com.badbones69.crazyvouchers.api.objects.other.ItemBuilder;
 import com.badbones69.crazyvouchers.utils.MsgUtils;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
@@ -23,6 +23,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import us.crazycrew.crazyvouchers.common.config.ConfigManager;
 import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
+
 import java.util.HashMap;
 import java.util.Random;
 
@@ -247,9 +248,11 @@ public class VoucherCommands implements CommandExecutor {
                                         }
                                     }
 
-                                    if (voucherCode.useFireworks()) this.methods.firework(player.getLocation(), voucherCode.getFireworkColors());
+                                    if (voucherCode.useFireworks())
+                                        this.methods.firework(player.getLocation(), voucherCode.getFireworkColors());
 
-                                    if (!voucherCode.getMessage().isEmpty()) player.sendMessage(MsgUtils.color(this.methods.replacePlaceholders(placeholders, voucherCode.getMessage(), true)));
+                                    if (!voucherCode.getMessage().isEmpty())
+                                        player.sendMessage(MsgUtils.color(this.methods.replacePlaceholders(placeholders, voucherCode.getMessage(), true)));
                                 }
                             } else {
                                 Messages.code_unavailable.sendMessage(player, placeholders);
@@ -312,7 +315,8 @@ public class VoucherCommands implements CommandExecutor {
                                 placeholders.put("{player}", player.getName());
                                 placeholders.put("{voucher}", voucher.getName());
 
-                                if (!Messages.sent_voucher.isBlank()) Messages.sent_voucher.sendMessage(sender, placeholders);
+                                if (!Messages.sent_voucher.isBlank())
+                                    Messages.sent_voucher.sendMessage(sender, placeholders);
                             } else {
                                 Messages.not_online.sendMessage(sender);
                             }

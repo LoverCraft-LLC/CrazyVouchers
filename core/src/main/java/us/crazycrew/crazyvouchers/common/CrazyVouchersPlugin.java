@@ -2,6 +2,7 @@ package us.crazycrew.crazyvouchers.common;
 
 import us.crazycrew.crazyvouchers.common.api.AbstractPlugin;
 import us.crazycrew.crazyvouchers.common.config.ConfigManager;
+
 import java.io.File;
 
 public class CrazyVouchersPlugin extends AbstractPlugin {

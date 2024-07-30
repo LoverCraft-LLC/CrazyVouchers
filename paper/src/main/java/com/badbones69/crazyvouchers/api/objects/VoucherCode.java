@@ -3,13 +3,14 @@ package com.badbones69.crazyvouchers.api.objects;
 import com.badbones69.crazyvouchers.CrazyVouchers;
 import com.badbones69.crazyvouchers.api.enums.Messages;
 import com.badbones69.crazyvouchers.api.objects.other.ItemBuilder;
-import com.ryderbelserion.vital.paper.util.DyeUtil;
+import com.badbones69.crazyvouchers.utils.DyeUtil;
 import org.bukkit.Color;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.jetbrains.annotations.NotNull;
 import us.crazycrew.crazyvouchers.common.config.ConfigManager;
 import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -18,7 +19,7 @@ public class VoucherCode {
 
     @NotNull
     private final CrazyVouchers plugin = CrazyVouchers.get();
-    
+
     private final String name;
     private final String code;
     private final boolean enabled;
@@ -27,26 +28,26 @@ public class VoucherCode {
     private final List<String> commands;
     private final boolean whitelistPermissionToggle;
     private final List<String> whitelistPermissions = new ArrayList<>();
-    private List<String> whitelistCommands = new ArrayList<>();
     private final boolean whitelistWorldsToggle;
-    private String whitelistWorldMessage;
     private final List<String> whitelistWorlds = new ArrayList<>();
-    private List<String> whitelistWorldCommands = new ArrayList<>();
     private final boolean blacklistPermissionsToggle;
-    private String blacklistPermissionMessage;
-    private List<String> blacklistCommands = new ArrayList<>();
-    private List<String> blacklistPermissions = new ArrayList<>();
     private final boolean limiterToggle;
-    private Integer limiterLimit;
     private final boolean soundToggle;
     private final List<Sound> sounds = new ArrayList<>();
-    private float volume;
-    private float pitch;
     private final boolean fireworkToggle;
     private final List<Color> fireworkColors = new ArrayList<>();
     private final List<VoucherCommand> randomCommands = new ArrayList<>();
     private final List<VoucherCommand> chanceCommands = new ArrayList<>();
     private final List<ItemBuilder> items = new ArrayList<>();
+    private List<String> whitelistCommands = new ArrayList<>();
+    private String whitelistWorldMessage;
+    private List<String> whitelistWorldCommands = new ArrayList<>();
+    private String blacklistPermissionMessage;
+    private List<String> blacklistCommands = new ArrayList<>();
+    private List<String> blacklistPermissions = new ArrayList<>();
+    private Integer limiterLimit;
+    private float volume;
+    private float pitch;
 
     public VoucherCode(FileConfiguration file, String name) {
         this.name = name;
@@ -149,7 +150,8 @@ public class VoucherCode {
             for (String sound : file.getStringList(path + "options.sound.sounds")) {
                 try {
                     this.sounds.add(Sound.valueOf(sound));
-                } catch (Exception ignored) {}
+                } catch (Exception ignored) {
+                }
             }
         } else {
             this.soundToggle = false;
@@ -165,87 +167,87 @@ public class VoucherCode {
             this.fireworkToggle = false;
         }
     }
-    
+
     public String getName() {
         return this.name;
     }
-    
+
     public String getCode() {
         return this.code;
     }
-    
+
     public boolean isEnabled() {
         return this.enabled;
     }
-    
+
     public boolean isCaseSensitive() {
         return this.caseSensitive;
     }
-    
+
     public String getMessage() {
         return this.message;
     }
-    
+
     public List<String> getCommands() {
         return this.commands;
     }
-    
+
     public boolean useWhiteListPermissions() {
         return this.whitelistPermissionToggle;
     }
-    
+
     public List<String> getWhitelistPermissions() {
         return this.whitelistPermissions;
     }
-    
+
     public List<String> getWhitelistCommands() {
         return this.whitelistCommands;
     }
-    
+
     public boolean useWhitelistWorlds() {
         return this.whitelistWorldsToggle;
     }
-    
+
     public String getWhitelistWorldMessage() {
         return this.whitelistWorldMessage;
     }
-    
+
     public List<String> getWhitelistWorlds() {
         return this.whitelistWorlds;
     }
-    
+
     public boolean useBlacklistPermissions() {
         return this.blacklistPermissionsToggle;
     }
-    
+
     public List<String> getWhitelistWorldCommands() {
         return this.whitelistWorldCommands;
     }
-    
+
     public String getBlacklistMessage() {
         return this.blacklistPermissionMessage;
     }
-    
+
     public List<String> getBlacklistPermissions() {
         return this.blacklistPermissions;
     }
-    
+
     public List<String> getBlacklistCommands() {
         return this.blacklistCommands;
     }
-    
+
     public boolean useLimiter() {
         return this.limiterToggle;
     }
-    
+
     public int getLimit() {
         return this.limiterLimit;
     }
-    
+
     public boolean useSounds() {
         return this.soundToggle;
     }
-    
+
     public List<Sound> getSounds() {
         return this.sounds;
     }
@@ -257,23 +259,23 @@ public class VoucherCode {
     public float getVolume() {
         return this.volume;
     }
-    
+
     public boolean useFireworks() {
         return this.fireworkToggle;
     }
-    
+
     public List<Color> getFireworkColors() {
         return this.fireworkColors;
     }
-    
+
     public List<VoucherCommand> getRandomCommands() {
         return this.randomCommands;
     }
-    
+
     public List<VoucherCommand> getChanceCommands() {
         return this.chanceCommands;
     }
-    
+
     public List<ItemBuilder> getItems() {
         return this.items;
     }

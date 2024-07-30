@@ -7,14 +7,14 @@ version: '3.4'
 api-version: '${apiVersion}'
 description: '${description}'
 
-softdepend: [PlaceholderAPI, Oraxen, ItemsAdder]
+softdepend: [ PlaceholderAPI, Oraxen, ItemsAdder ]
 
 folia-supported: true
 
 commands:
   vouchers:
     description: "Manage your vouchers however you want."
-    aliases: [voucher]
+    aliases: [ voucher ]
 
 permissions:
   voucher.admin:

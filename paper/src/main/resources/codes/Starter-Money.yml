@@ -35,7 +35,7 @@ voucher-code:
         world for this voucher.'
       # The list of worlds they have to be in.
       worlds:
-      - 'world'
+        - 'world'
       # The commands to run if they don't have the permission.
       commands:
         - 'msg {player} send command for whatever reason'
@@ -47,7 +47,7 @@ voucher-code:
         message: '{prefix}You need {permission} so you can use this.'
         # If they don't have this permission, they can't use the voucher.
         permissions:
-        - 'voucher.startermoney'
+          - 'voucher.startermoney'
         # The commands to run if they don't have the permission.
         commands:
           - 'msg {player} send command for whatever reason'
@@ -58,7 +58,7 @@ voucher-code:
         message: '{prefix}&cYou have a blacklisted permission and can''t use this voucher.'
         # If they have this permission, they can't use the voucher.
         permissions:
-        - 'voucher.blacklist.startermoney'
+          - 'voucher.blacklist.startermoney'
           # The commands to run if they do have the permission.
         commands:
           - 'msg {player} send command for whatever reason'

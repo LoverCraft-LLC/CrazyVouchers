@@ -24,8 +24,8 @@ voucher:
   name: '&8&l>&7&l>&cTrim Example&7&l<&8&l<'
   # The lore of the item.
   lore:
-  - '&7Use this voucher to get fancy trims.'
-  - '&7&l(&6&l!&7&l) &7Right click to redeem.'
+    - '&7Use this voucher to get fancy trims.'
+    - '&7&l(&6&l!&7&l) &7Right click to redeem.'
   player: ''
   # If the item should glow or not.
   glowing: true
@@ -109,7 +109,7 @@ voucher:
       # The sound or sounds to use.
       # https://jd.papermc.io/paper/1.20/org/bukkit/Sound.html
       sounds:
-      - 'BLOCK_CHERRY_WOOD_BUTTON_CLICK_ON'
+        - 'BLOCK_CHERRY_WOOD_BUTTON_CLICK_ON'
     firework:
       # If the fireworks should be enabled.
       toggle: true

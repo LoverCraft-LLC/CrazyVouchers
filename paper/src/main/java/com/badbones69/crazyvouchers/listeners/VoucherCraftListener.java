@@ -9,7 +9,7 @@ import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.*;
+import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
@@ -24,7 +24,8 @@ public class VoucherCraftListener implements Listener {
 
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void prepareItemCraft(PrepareItemCraftEvent event) {
-        if (!this.plugin.getCrazyHandler().getConfigManager().getConfig().getProperty(ConfigKeys.prevent_using_vouchers_in_recipes_toggle)) return;
+        if (!this.plugin.getCrazyHandler().getConfigManager().getConfig().getProperty(ConfigKeys.prevent_using_vouchers_in_recipes_toggle))
+            return;
 
         for (ItemStack itemStack : event.getInventory().getMatrix()) {
             if (itemStack != null) {

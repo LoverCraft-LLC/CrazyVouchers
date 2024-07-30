@@ -8,18 +8,17 @@ import us.crazycrew.crazyvouchers.common.config.migrate.ConfigMigration;
 import us.crazycrew.crazyvouchers.common.config.migrate.LocaleMigration;
 import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
 import us.crazycrew.crazyvouchers.common.config.types.MessageKeys;
+
 import java.io.File;
 
 public class ConfigManager {
 
     private final File dataFolder;
-
+    private SettingsManager messages;
+    private SettingsManager config;
     public ConfigManager(File dataFolder) {
         this.dataFolder = dataFolder;
     }
-
-    private SettingsManager messages;
-    private SettingsManager config;
 
     public void load() {
         YamlFileResourceOptions builder = YamlFileResourceOptions.builder().indentationSize(2).build();

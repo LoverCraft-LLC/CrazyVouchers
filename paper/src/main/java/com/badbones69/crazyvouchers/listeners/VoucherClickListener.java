@@ -6,16 +6,12 @@ import com.badbones69.crazyvouchers.api.CrazyManager;
 import com.badbones69.crazyvouchers.api.FileManager.Files;
 import com.badbones69.crazyvouchers.api.enums.Messages;
 import com.badbones69.crazyvouchers.api.events.VoucherRedeemEvent;
-import com.badbones69.crazyvouchers.api.objects.other.ItemBuilder;
 import com.badbones69.crazyvouchers.api.objects.Voucher;
+import com.badbones69.crazyvouchers.api.objects.other.ItemBuilder;
 import com.badbones69.crazyvouchers.utils.MsgUtils;
-import com.ryderbelserion.vital.paper.enums.Support;
+import com.badbones69.crazyvouchers.utils.Support;
 import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.SoundCategory;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -30,6 +26,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
+
 import java.util.HashMap;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
@@ -45,7 +42,7 @@ public class VoucherClickListener implements Listener {
 
     @NotNull
     private final Methods methods = this.plugin.getMethods();
-    
+
     private final HashMap<UUID, String> twoAuth = new HashMap<>();
 
     private final HashMap<String, String> placeholders = new HashMap<>();
@@ -79,7 +76,7 @@ public class VoucherClickListener implements Listener {
             event.setCancelled(true);
         }
     }
-    
+
     // This must run as highest, so it doesn't cause other plugins to check
     // the items that were added to the players inventory and replaced the item in the player's hand.
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -112,7 +109,7 @@ public class VoucherClickListener implements Listener {
             }
         }
     }
-    
+
     @EventHandler(ignoreCancelled = true)
     public void onItemConsume(PlayerItemConsumeEvent event) {
         ItemStack item = event.getItem();
@@ -121,7 +118,7 @@ public class VoucherClickListener implements Listener {
         if (voucher != null && voucher.isEdible()) {
             Player player = event.getPlayer();
             event.setCancelled(true);
-            
+
             if (item.getAmount() > 1) {
                 Messages.unstack_item.sendMessage(player);
             } else {
@@ -129,12 +126,13 @@ public class VoucherClickListener implements Listener {
             }
         }
     }
-    
+
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onArmorStandClick(PlayerInteractEntityEvent event) {
-        if (event.getHand() == EquipmentSlot.HAND && this.crazyManager.getVoucherFromItem(getItemInHand(event.getPlayer())) != null) event.setCancelled(true);
+        if (event.getHand() == EquipmentSlot.HAND && this.crazyManager.getVoucherFromItem(getItemInHand(event.getPlayer())) != null)
+            event.setCancelled(true);
     }
-    
+
     private void useVoucher(Player player, Voucher voucher, ItemStack item) {
         FileConfiguration data = Files.users.getFile();
         String argument = this.crazyManager.getArgument(item, voucher);
@@ -319,7 +317,7 @@ public class VoucherClickListener implements Listener {
 
         return MsgUtils.color(string);
     }
-    
+
     private int getRandom(int max) {
         return ThreadLocalRandom.current().nextInt(max);
     }

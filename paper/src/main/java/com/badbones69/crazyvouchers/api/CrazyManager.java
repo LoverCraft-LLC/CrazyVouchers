@@ -1,14 +1,15 @@
 package com.badbones69.crazyvouchers.api;
 
 import com.badbones69.crazyvouchers.CrazyVouchers;
-import com.badbones69.crazyvouchers.api.objects.other.ItemBuilder;
 import com.badbones69.crazyvouchers.api.objects.Voucher;
-import de.tr7zw.changeme.nbtapi.NBTItem;
 import com.badbones69.crazyvouchers.api.objects.VoucherCode;
+import com.badbones69.crazyvouchers.api.objects.other.ItemBuilder;
+import de.tr7zw.changeme.nbtapi.NBTItem;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 import us.crazycrew.crazyvouchers.common.config.ConfigManager;
 import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -20,10 +21,10 @@ public class CrazyManager {
     private final CrazyVouchers plugin = CrazyVouchers.get();
 
     private final ConfigManager configManager = this.plugin.getCrazyHandler().getConfigManager();
-    
+
     private final ArrayList<Voucher> vouchers = new ArrayList<>();
     private final ArrayList<VoucherCode> voucherCodes = new ArrayList<>();
-    
+
     public void load() {
         // Used for when wanting to put in fake vouchers.
         // for(int i = 1; i <= 400; i++) vouchers.add(new Voucher(i));
@@ -66,7 +67,7 @@ public class CrazyManager {
                 FileConfiguration file = this.plugin.getFileManager().getFile(voucherCode).getFile();
                 this.voucherCodes.add(new VoucherCode(file, voucherCode));
             } catch (Exception exception) {
-                this.plugin.getLogger().log(Level.SEVERE,"There was an error while loading the " + voucherCode + ".yml file.", exception);
+                this.plugin.getLogger().log(Level.SEVERE, "There was an error while loading the " + voucherCode + ".yml file.", exception);
             }
         }
     }
@@ -77,15 +78,15 @@ public class CrazyManager {
 
         loadVouchers();
     }
-    
+
     public List<Voucher> getVouchers() {
         return Collections.unmodifiableList(this.vouchers);
     }
-    
+
     public List<VoucherCode> getVoucherCodes() {
         return Collections.unmodifiableList(this.voucherCodes);
     }
-    
+
     public Voucher getVoucher(String voucherName) {
         for (Voucher voucher : getVouchers()) {
             if (voucher.getName().equalsIgnoreCase(voucherName)) {
@@ -95,7 +96,7 @@ public class CrazyManager {
 
         return null;
     }
-    
+
     public boolean isVoucherName(String voucherName) {
         for (Voucher voucher : getVouchers()) {
             if (voucher.getName().equalsIgnoreCase(voucherName)) return false;
@@ -103,7 +104,7 @@ public class CrazyManager {
 
         return true;
     }
-    
+
     public VoucherCode getVoucherCode(String voucherName) {
         for (VoucherCode voucher : getVoucherCodes()) {
             if (voucher.getCode().equalsIgnoreCase(voucherName)) return voucher;
@@ -111,7 +112,7 @@ public class CrazyManager {
 
         return null;
     }
-    
+
     public boolean isVoucherCode(String voucherCode) {
         for (VoucherCode voucher : getVoucherCodes()) {
             if (voucher.isEnabled()) {
@@ -131,7 +132,8 @@ public class CrazyManager {
             NBTItem nbt = new NBTItem(item);
 
             if (nbt.hasTag("voucher")) return getVoucher(nbt.getString("voucher"));
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
         return null;
     }
 
@@ -147,7 +149,7 @@ public class CrazyManager {
 
         return null;
     }
-    
+
     public String replaceRandom(String string) {
         String newString = string;
 
@@ -181,11 +183,11 @@ public class CrazyManager {
     public List<ItemBuilder> getItems(FileConfiguration file, String voucher) {
         return ItemBuilder.convertStringList(file.getStringList("voucher.items"), voucher);
     }
-    
+
     private boolean usesRandom(String string) {
         return string.toLowerCase().contains("{random}:");
     }
-    
+
     private long pickNumber(long min, long max) {
         try {
             return min + ThreadLocalRandom.current().nextLong(max - min);

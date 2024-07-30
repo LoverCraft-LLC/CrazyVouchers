@@ -39,7 +39,8 @@ public abstract class InventoryBuilder implements InventoryHolder, Listener {
         this.inventory = this.plugin.getServer().createInventory(this, this.size, MsgUtils.color(this.title));
     }
 
-    public InventoryBuilder() {}
+    public InventoryBuilder() {
+    }
 
     public abstract InventoryBuilder build();
 
@@ -58,12 +59,12 @@ public abstract class InventoryBuilder implements InventoryHolder, Listener {
         return this.size;
     }
 
-    public void setPage(int page) {
-        this.page = page;
-    }
-
     public int getPage() {
         return this.page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
     }
 
     public void title(String title) {

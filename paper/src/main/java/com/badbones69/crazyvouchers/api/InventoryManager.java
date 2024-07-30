@@ -12,11 +12,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+
+import java.util.*;
 
 public class InventoryManager {
 
@@ -66,7 +63,7 @@ public class InventoryManager {
         int startIndex = page * max - max;
         int endIndex = Math.min(startIndex + max, count);
 
-        for (;startIndex < endIndex; startIndex++) {
+        for (; startIndex < endIndex; startIndex++) {
             if (startIndex < count) {
                 items.add(getVoucher(vouchers.get(startIndex)));
             }

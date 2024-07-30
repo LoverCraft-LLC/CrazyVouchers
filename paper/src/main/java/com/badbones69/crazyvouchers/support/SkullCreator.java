@@ -8,6 +8,7 @@ import org.bukkit.block.Skull;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.jetbrains.annotations.NotNull;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Base64;
@@ -41,7 +42,7 @@ public class SkullCreator {
      * Creates a player skull based on a UUID. 1.13 only.
      *
      * @param item The item to apply the name to
-     * @param id The Player's UUID
+     * @param id   The Player's UUID
      * @return The head of the Player
      */
     public static ItemStack itemWithUuid(ItemStack item, UUID id) {
@@ -71,7 +72,7 @@ public class SkullCreator {
      * Creates a player skull based on a Mojang server URL.
      *
      * @param item The item to apply the skin to
-     * @param url The URL of the Mojang skin
+     * @param url  The URL of the Mojang skin
      * @return The head associated with the URL
      */
     public static ItemStack itemWithUrl(ItemStack item, String url) {
@@ -96,7 +97,7 @@ public class SkullCreator {
     /**
      * Applies the base64 string to the ItemStack.
      *
-     * @param item The ItemStack to put the base64 onto
+     * @param item   The ItemStack to put the base64 onto
      * @param base64 The base64 string containing the texture
      * @return The head with a custom texture
      */
@@ -114,7 +115,7 @@ public class SkullCreator {
      * Sets the block to a skull with the given UUID.
      *
      * @param block The block to set
-     * @param id The player to set it to
+     * @param id    The player to set it to
      */
     public static void blockWithUuid(Block block, UUID id) {
         notNull(block, "block");
@@ -128,7 +129,7 @@ public class SkullCreator {
      * Sets the block to a skull with the given UUID.
      *
      * @param block The block to set
-     * @param url The mojang URL to set it to use
+     * @param url   The mojang URL to set it to use
      */
     public static void blockWithUrl(Block block, String url) {
         notNull(block, "block");
@@ -140,7 +141,7 @@ public class SkullCreator {
     /**
      * Sets the block to a skull with the given UUID.
      *
-     * @param block The block to set
+     * @param block  The block to set
      * @param base64 The base64 to set it to use
      */
     public static void blockWithBase64(Block block, String base64) {

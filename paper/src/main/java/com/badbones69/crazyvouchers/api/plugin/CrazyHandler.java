@@ -2,10 +2,11 @@ package com.badbones69.crazyvouchers.api.plugin;
 
 import com.badbones69.crazyvouchers.api.FileManager;
 import com.badbones69.crazyvouchers.api.plugin.migration.MigrationService;
-import us.crazycrew.crazyvouchers.common.config.ConfigManager;
-import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
 import org.jetbrains.annotations.NotNull;
 import us.crazycrew.crazyvouchers.common.CrazyVouchersPlugin;
+import us.crazycrew.crazyvouchers.common.config.ConfigManager;
+import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
+
 import java.io.File;
 
 public class CrazyHandler extends CrazyVouchersPlugin {

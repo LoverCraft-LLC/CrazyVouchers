@@ -1,10 +1,11 @@
 package com.badbones69.crazyvouchers;
 
 import ch.jalu.configme.SettingsManager;
-import com.badbones69.crazyvouchers.api.enums.PersistentKeys;
 import com.badbones69.crazyvouchers.api.enums.Messages;
+import com.badbones69.crazyvouchers.api.enums.PersistentKeys;
+import com.badbones69.crazyvouchers.api.plugin.CrazyHandler;
+import com.badbones69.crazyvouchers.utils.FoliaRunnable;
 import com.badbones69.crazyvouchers.utils.MsgUtils;
-import com.ryderbelserion.vital.paper.util.scheduler.FoliaRunnable;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
@@ -18,7 +19,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 import us.crazycrew.crazyvouchers.common.config.ConfigManager;
 import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
-import com.badbones69.crazyvouchers.api.plugin.CrazyHandler;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class Methods {
     private final ConfigManager configManager = this.crazyHandler.getConfigManager();
     @NotNull
     private final SettingsManager config = this.configManager.getConfig();
-    
+
     public void removeItem(ItemStack item, Player player) {
         if (item.getAmount() <= 1) {
             player.getInventory().removeItem(item);
@@ -40,11 +41,11 @@ public class Methods {
             item.setAmount(item.getAmount() - 1);
         }
     }
-    
+
     public String getPrefix(String message) {
         return MsgUtils.color(this.config.getProperty(ConfigKeys.command_prefix) + message);
     }
-    
+
     public boolean isInt(String s) {
         try {
             Integer.parseInt(s);
@@ -54,7 +55,7 @@ public class Methods {
 
         return true;
     }
-    
+
     public boolean isInt(CommandSender sender, String s) {
         try {
             Integer.parseInt(s);
@@ -73,9 +74,10 @@ public class Methods {
             message = message.replace(placeholder, placeholders.get(placeholder)).replace(placeholder.toLowerCase(), placeholders.get(placeholder));
         }
 
-        if (isCommand) return message; else return MsgUtils.color(message);
+        if (isCommand) return message;
+        else return MsgUtils.color(message);
     }
-    
+
     public boolean isOnline(CommandSender sender, String name) {
         for (Player player : this.plugin.getServer().getOnlinePlayers()) {
             if (player.getName().equalsIgnoreCase(name)) return true;
@@ -84,7 +86,7 @@ public class Methods {
         Messages.not_online.sendMessage(sender);
         return false;
     }
-    
+
     public boolean hasPermission(Player player, String perm) {
         if (!player.hasPermission("voucher." + perm)) {
             Messages.no_permission.sendMessage(player);
@@ -93,7 +95,7 @@ public class Methods {
 
         return true;
     }
-    
+
     public boolean hasPermission(CommandSender sender, String perm) {
         if (sender instanceof Player player) {
             if (!player.hasPermission("voucher." + perm)) {
@@ -106,11 +108,11 @@ public class Methods {
             return true;
         }
     }
-    
+
     public boolean isInventoryFull(Player player) {
         return player.getInventory().firstEmpty() == -1;
     }
-    
+
     public void firework(Location loc, List<Color> list) {
         if (loc.getWorld() == null) return;
 

@@ -5,6 +5,7 @@ import org.apache.commons.io.FileUtils;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.jetbrains.annotations.NotNull;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -313,7 +314,7 @@ public class MigrationService {
                     e.printStackTrace();
                 }
             }
-            
+
             String path = "Vouchers." + name + ".";
 
             // Default content.
@@ -377,7 +378,7 @@ public class MigrationService {
             List<String> itemFlags = backup.getStringList(path + "Flags");
 
             YamlConfiguration voucher = YamlConfiguration.loadConfiguration(newFile);
-            
+
             String newPath = "voucher.";
 
             voucher.set(newPath + "item", item);
@@ -398,7 +399,7 @@ public class MigrationService {
             }
 
             voucher.set(newPath + "player", player);
-            
+
             if (backup.contains(path + "Glowing")) voucher.set(newPath + "glowing", glowing);
 
             ConfigurationSection section = backup.getConfigurationSection(path + "Options.Required-Placeholders");

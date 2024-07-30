@@ -13,7 +13,7 @@ oraxen = "1.171.0"
 annotations = "24.1.0"
 crazycrates = "0.6"
 gson = "2.10.1"
-vital = "1.0.2"
+vital = "2.0.1"
 
 decentholograms = "2.8.8"
 fancyholograms = "2.0.6"
@@ -23,7 +23,7 @@ tirumph-gui = "3.1.7"
 
 worldguard = "7.0.10"
 
-paperweight="1.7.1"
+paperweight = "1.7.1"
 shadowJar = "8.1.7"
 runPaper = "2.3.0"
 minotaur = "2.+"

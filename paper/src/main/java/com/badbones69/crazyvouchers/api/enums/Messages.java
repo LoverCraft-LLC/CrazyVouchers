@@ -4,13 +4,14 @@ import ch.jalu.configme.SettingsManager;
 import ch.jalu.configme.properties.Property;
 import com.badbones69.crazyvouchers.CrazyVouchers;
 import com.badbones69.crazyvouchers.utils.MsgUtils;
-import com.ryderbelserion.vital.core.util.StringUtil;
+import com.badbones69.crazyvouchers.utils.StringUtil;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import us.crazycrew.crazyvouchers.common.config.ConfigManager;
 import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
 import us.crazycrew.crazyvouchers.common.config.types.MessageKeys;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,14 +40,13 @@ public enum Messages {
     cannot_put_items_in_crafting_table(MessageKeys.cannot_put_items_in_crafting_table),
     help(MessageKeys.help, true);
 
+    private final CrazyVouchers plugin = CrazyVouchers.get();
+    private final ConfigManager configManager = this.plugin.getCrazyHandler().getConfigManager();
+    private final SettingsManager messages = this.configManager.getMessages();
     private Property<String> property;
-
     private Property<List<String>> listProperty;
-
     private boolean isList = false;
-
     private String message;
-
     /**
      * Used for strings
      *
@@ -55,22 +55,17 @@ public enum Messages {
     Messages(Property<String> property) {
         this.property = property;
     }
-
     /**
      * Used for string lists
      *
      * @param listProperty the list property
-     * @param isList Defines if it's a list or not.
+     * @param isList       Defines if it's a list or not.
      */
     Messages(Property<List<String>> listProperty, boolean isList) {
         this.listProperty = listProperty;
 
         this.isList = isList;
     }
-
-    private final CrazyVouchers plugin = CrazyVouchers.get();
-    private final ConfigManager configManager = this.plugin.getCrazyHandler().getConfigManager();
-    private final SettingsManager messages = this.configManager.getMessages();
 
     private boolean isList() {
         return this.isList;

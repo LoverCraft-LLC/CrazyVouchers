@@ -5,9 +5,11 @@ import ch.jalu.configme.properties.Property;
 import ch.jalu.configme.resource.PropertyReader;
 import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
 import us.crazycrew.crazyvouchers.common.config.types.MessageKeys;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import static ch.jalu.configme.properties.PropertyInitializer.newListProperty;
 import static ch.jalu.configme.properties.PropertyInitializer.newProperty;
 
@@ -41,6 +43,12 @@ public enum FileProperty {
 
     private Property<String> newString;
     private Property<String> oldString;
+    private Property<Boolean> newBoolean;
+    private Property<Boolean> oldBoolean;
+    private Property<Integer> newInteger;
+    private Property<Integer> oldInteger;
+    private Property<List<String>> newList;
+    private Property<List<String>> oldList;
 
     /**
      * A constructor moving the new and old string property for migration
@@ -52,11 +60,46 @@ public enum FileProperty {
         this.newString = newString;
         this.oldString = oldString;
     }
+    /**
+     * A constructor consisting of the new and old boolean property for migration
+     *
+     * @param newBoolean the new property
+     * @param oldBoolean the old property
+     * @param dummy      only to differentiate from previous constructors
+     */
+    FileProperty(Property<Boolean> newBoolean, Property<Boolean> oldBoolean, boolean dummy) {
+        this.newBoolean = newBoolean;
+        this.oldBoolean = oldBoolean;
+    }
+
+    /**
+     * A constructor consisting of the new and old int property for migration
+     *
+     * @param newInteger the new property
+     * @param oldInteger the old property
+     * @param dummy      only to differentiate from previous constructors
+     */
+    FileProperty(Property<Integer> newInteger, Property<Integer> oldInteger, int dummy) {
+        this.newInteger = newInteger;
+        this.oldInteger = oldInteger;
+    }
+
+    /**
+     * A constructor consisting of the new and old list property for migration
+     *
+     * @param newList the new property
+     * @param oldList the old property
+     * @param dummy   only to differentiate from previous constructors
+     */
+    FileProperty(Property<List<String>> newList, Property<List<String>> oldList, List<String> dummy) {
+        this.newList = newList;
+        this.oldList = oldList;
+    }
 
     /**
      * Moves the old value to the new value
      *
-     * @param reader the config reader
+     * @param reader        the config reader
      * @param configuration the configuration data
      * @return true or false
      */
@@ -70,25 +113,10 @@ public enum FileProperty {
         return true;
     }
 
-    private Property<Boolean> newBoolean;
-    private Property<Boolean> oldBoolean;
-
-    /**
-     * A constructor consisting of the new and old boolean property for migration
-     *
-     * @param newBoolean the new property
-     * @param oldBoolean the old property
-     * @param dummy only to differentiate from previous constructors
-     */
-    FileProperty(Property<Boolean> newBoolean, Property<Boolean> oldBoolean, boolean dummy) {
-        this.newBoolean = newBoolean;
-        this.oldBoolean = oldBoolean;
-    }
-
     /**
      * Moves the old value to the new value
      *
-     * @param reader the config reader
+     * @param reader        the config reader
      * @param configuration the configuration data
      * @return true or false
      */
@@ -102,25 +130,10 @@ public enum FileProperty {
         return true;
     }
 
-    private Property<Integer> newInteger;
-    private Property<Integer> oldInteger;
-
-    /**
-     * A constructor consisting of the new and old int property for migration
-     *
-     * @param newInteger the new property
-     * @param oldInteger the old property
-     * @param dummy only to differentiate from previous constructors
-     */
-    FileProperty(Property<Integer> newInteger, Property<Integer> oldInteger, int dummy) {
-        this.newInteger = newInteger;
-        this.oldInteger = oldInteger;
-    }
-
     /**
      * Moves the old value to the new value
      *
-     * @param reader the config reader
+     * @param reader        the config reader
      * @param configuration the configuration data
      * @return true or false
      */
@@ -134,25 +147,10 @@ public enum FileProperty {
         return true;
     }
 
-    private Property<List<String>> newList;
-    private Property<List<String>> oldList;
-
-    /**
-     * A constructor consisting of the new and old list property for migration
-     *
-     * @param newList the new property
-     * @param oldList the old property
-     * @param dummy only to differentiate from previous constructors
-     */
-    FileProperty(Property<List<String>> newList, Property<List<String>> oldList, List<String> dummy) {
-        this.newList = newList;
-        this.oldList = oldList;
-    }
-
     /**
      * Moves the old value to the new value
      *
-     * @param reader the config reader
+     * @param reader        the config reader
      * @param configuration the configuration data
      * @return true or false
      */

@@ -15,18 +15,21 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class VoucherMenu extends InventoryBuilder {
 
-    private @NotNull final InventoryManager inventoryManager = this.plugin.getInventoryManager();
+    private @NotNull
+    final InventoryManager inventoryManager = this.plugin.getInventoryManager();
 
     public VoucherMenu(final Player player, final int size, final int page, final String title) {
         super(player, size, page, title);
     }
 
-    public VoucherMenu() {}
+    public VoucherMenu() {
+    }
 
     @Override
     public InventoryBuilder build() {

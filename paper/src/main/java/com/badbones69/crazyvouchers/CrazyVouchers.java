@@ -2,17 +2,18 @@ package com.badbones69.crazyvouchers;
 
 import com.badbones69.crazyvouchers.api.CrazyManager;
 import com.badbones69.crazyvouchers.api.FileManager;
+import com.badbones69.crazyvouchers.api.FileManager.Files;
 import com.badbones69.crazyvouchers.api.InventoryManager;
 import com.badbones69.crazyvouchers.api.builders.types.VoucherMenu;
-import com.badbones69.crazyvouchers.listeners.FireworkDamageListener;
-import com.badbones69.crazyvouchers.api.FileManager.Files;
+import com.badbones69.crazyvouchers.api.plugin.CrazyHandler;
 import com.badbones69.crazyvouchers.commands.VoucherCommands;
 import com.badbones69.crazyvouchers.commands.VoucherTab;
+import com.badbones69.crazyvouchers.listeners.FireworkDamageListener;
 import com.badbones69.crazyvouchers.listeners.VoucherClickListener;
 import com.badbones69.crazyvouchers.listeners.VoucherCraftListener;
 import com.badbones69.crazyvouchers.listeners.VoucherMiscListener;
 import com.badbones69.crazyvouchers.support.MetricsWrapper;
-import com.ryderbelserion.vital.paper.VitalPaper;
+import com.badbones69.crazyvouchers.vital.VitalPaper;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
@@ -21,22 +22,18 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
-import com.badbones69.crazyvouchers.api.plugin.CrazyHandler;
 
 public class CrazyVouchers extends JavaPlugin {
+
+    private InventoryManager inventoryManager;
+    private CrazyHandler crazyHandler;
+    private CrazyManager crazyManager;
+    private Methods methods;
 
     @NotNull
     public static CrazyVouchers get() {
         return JavaPlugin.getPlugin(CrazyVouchers.class);
     }
-
-    private InventoryManager inventoryManager;
-
-    private CrazyHandler crazyHandler;
-
-    private CrazyManager crazyManager;
-
-    private Methods methods;
 
     @Override
     public void onEnable() {

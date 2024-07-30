@@ -7,8 +7,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import us.crazycrew.crazyvouchers.common.config.types.ConfigKeys;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import static java.util.regex.Matcher.quoteReplacement;
 
 @SuppressWarnings("ALL")
@@ -34,12 +36,16 @@ public class MsgUtils {
         String prefix = getPrefix();
 
         if (commandSender instanceof Player player) {
-            if (!prefix.isEmpty() && prefixToggle) player.sendMessage(color(message.replaceAll("%prefix%", quoteReplacement(prefix))).replaceAll("%Prefix%", quoteReplacement(prefix))); else player.sendMessage(color(message));
+            if (!prefix.isEmpty() && prefixToggle)
+                player.sendMessage(color(message.replaceAll("%prefix%", quoteReplacement(prefix))).replaceAll("%Prefix%", quoteReplacement(prefix)));
+            else player.sendMessage(color(message));
 
             return;
         }
 
-        if (!prefix.isEmpty() && prefixToggle) commandSender.sendMessage(color(message.replaceAll("%prefix%", quoteReplacement(prefix))).replaceAll("%Prefix%", quoteReplacement(prefix))); else commandSender.sendMessage(color(message));
+        if (!prefix.isEmpty() && prefixToggle)
+            commandSender.sendMessage(color(message.replaceAll("%prefix%", quoteReplacement(prefix))).replaceAll("%Prefix%", quoteReplacement(prefix)));
+        else commandSender.sendMessage(color(message));
     }
 
     public static String getPrefix() {
